@@ -5,16 +5,18 @@ const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, 'Name is required.'],
     },
     email: {
       type: String,
-      required: true,
-      unique: true,
+      required: [true, 'Email is required.'],
+      unique: [true, 'That email address is taken'],
+      lowercase: true,
+      // validate: [validator.isEmail, 'Enter a valid email address'],
     },
     password: {
       type: String,
-      required: true,
+      required: [true, 'Password is required.'],
     },
     isAdmin: {
       type: Boolean,
