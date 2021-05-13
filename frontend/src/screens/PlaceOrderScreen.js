@@ -10,7 +10,7 @@ const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
 
-  //Claculate prices
+  //Calculate prices
 
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
@@ -20,7 +20,7 @@ const PlaceOrderScreen = ({ history }) => {
     0
   )
 
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100)
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0.0 : 100)
   cart.taxPrice = addDecimals(Number((0.12 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = (
     Number(cart.itemsPrice) +

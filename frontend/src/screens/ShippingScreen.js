@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions'
+import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
@@ -19,6 +20,7 @@ const ShippingScreen = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(saveShippingAddress({ address, city, postalCode, country }))
+    dispatch({ type: ORDER_CREATE_RESET })
     history.push('/payment')
   }
   return (
